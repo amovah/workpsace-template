@@ -1,3 +1,3 @@
-cp -r ./ "$1"
+cp -r ./. "$1"
 cd "$1"
-yarn add -D gulp babel-eslint gulp-eslint
+npm i -D gulp babel-eslint gulp-eslint

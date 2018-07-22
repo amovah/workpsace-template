@@ -2,6 +2,9 @@
 logs
 *.log
 npm-debug.log*
+coverage
+node_modules
+npm-debug.log
 
 # Runtime data
 pids
@@ -37,3 +40,20 @@ jspm_packages
 build/
 .DS_Store
 nohup.out
+*.out
+
+# Editor
+*.sublime-*
+*.swo
+*.swp
+*.tgz
+*.xml
+.DS_Store
+.idea
+.project
+.strong-pm
+
+# Output
+*.csv
+*.dat
+*.iml
