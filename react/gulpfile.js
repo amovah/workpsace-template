@@ -36,7 +36,7 @@ gulp.task('prod:copy', ['lint', 'clean'], () =>
   ]
 );
 
-gulp.task('dev:build', ['clean'], cb =>
+gulp.task('dev:build', ['clean'], () => {
   webpack(require('./webpack/dev.js'), (err, stats) => {
     if (err) {
       throw new Error('webpack build failed', err);
@@ -46,9 +46,8 @@ gulp.task('dev:build', ['clean'], cb =>
       assets: true,
       colors: true
     }));
-    cb();
-  })
-);
+  });
+});
 
 gulp.task('prod:build', ['lint', 'clean'], cb =>
   webpack(require('./webpack/prod.js'), (err, stats) => {

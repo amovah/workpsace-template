@@ -1,0 +1,8 @@
+{
+  "entryPath": "src/app.js",
+  "scripts": {
+    "dev:build": "./node_modules/.bin/gulp dev",
+    "prod:build": "./node_modules/.bin/gulp prod",
+    "gulp": "./node_modules/.bin/gulp"
+  }
+}
