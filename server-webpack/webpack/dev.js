@@ -6,7 +6,7 @@ var nodeExternals = require('webpack-node-externals');
 const babelConfig = require('./babel.config.json');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: resolve(__dirname, '..', require('../package.json').main),
   output: {
     filename: 'app.js'
@@ -41,5 +41,6 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     })
-  ]
+  ],
+  watch: true
 };
