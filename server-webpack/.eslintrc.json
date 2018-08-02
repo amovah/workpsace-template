@@ -104,6 +104,7 @@
     "prefer-rest-params": 2,
     "prefer-spread": 2,
     "require-yield": 2,
-    "rest-spread-spacing": [2, "never"]
+    "rest-spread-spacing": [2, "never"],
+    "getter-return": 2
   }
 }
