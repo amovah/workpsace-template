@@ -8,7 +8,7 @@ const config = require('../src/config.js');
 
 module.exports = {
   mode: 'development',
-  entry: resolve(__dirname, '..', require('../package.json').main),
+  entry: resolve(__dirname, '..', 'src/app.js'),
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, '..', 'build/static/js')
