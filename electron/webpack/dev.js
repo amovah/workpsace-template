@@ -49,4 +49,7 @@ module.exports = {
   devtool: 'source-map',
   target: 'node',
   externals: [nodeExternals()],
+  node: {
+    __dirname: false,
+  },
 };
