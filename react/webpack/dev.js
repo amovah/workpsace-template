@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -50,8 +50,8 @@ module.exports = {
           {
             loader: 'string-replace-loader',
             options: {
-              search: '\@@CDN@@',
-              replace: config.devCDN,
+              search: '@@CDN@@',
+              replace: config.cdn,
               flags: 'g'
             }
           }
@@ -61,15 +61,16 @@ module.exports = {
   },
   resolve: {
     alias: {
-      Root: resolve(__dirname, '..', 'src'),
-    }
+      Root: resolve(__dirname, '..' ,'src'),
+    },
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-      }
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
     })
   ],
-  watch: true
+  watch: true,
+  devtool: 'source-map',
+  target: 'web',
 };

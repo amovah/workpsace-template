@@ -17,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -63,7 +63,8 @@ module.exports = {
   resolve: {
     alias: {
       Root: resolve(__dirname, '..', 'src'),
-    }
+    },
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -74,5 +75,6 @@ module.exports = {
     new UglifyJsPlugin({
       cache: true
     })
-  ]
+  ],
+  target: 'web',
 };
