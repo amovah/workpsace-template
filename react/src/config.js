@@ -1,6 +1,6 @@
 let config = {
   prodCDN: '',
-  devCDN: 'http://localhost:5001/static'
+  devCDN: `http://localhost:${process.env.NODE_PORT}/static`,
 };
 
 if (process.env.NODE_ENV === 'development') {

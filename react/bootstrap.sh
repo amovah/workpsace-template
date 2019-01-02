@@ -4,8 +4,8 @@ yarn add -D autoprefixer @babel/core babel-eslint babel-loader \
 @babel/preset-env @babel/preset-react \
 css-loader del eslint eslint-plugin-react gulp gulp-eslint gulp-replace \
 less less-loader postcss-loader string-replace-loader style-loader \
-uglifyjs-webpack-plugin url-loader webpack express gulp-cli prop-types \
-eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
+uglifyjs-webpack-plugin url-loader webpack webpack-cli webpack-dev-server gulp-cli \
+prop-types eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
+mini-css-extract-plugin optimize-css-assets-webpack-plugin
 
-yarn add prop-types react react-dom react-redux react-router-dom redux \
-redux-thunk
+yarn add prop-types react react-dom react-redux react-router-dom redux
