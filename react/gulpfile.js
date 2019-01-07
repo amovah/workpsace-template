@@ -4,15 +4,12 @@ const gulp = require('gulp');
 const del = require('del');
 const lint = require('gulp-eslint');
 const replace = require('gulp-replace');
-const webpack = require('webpack');
 const config = require('./src/config.js');
 
 gulp.task('clean', cb =>
   del([
     'build/**',
     '!build',
-    'dist/**',
-    '!dist',
   ],
     cb,
   )

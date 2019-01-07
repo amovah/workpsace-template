@@ -1,45 +1,27 @@
 /* eslint-disable */
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
-const { resolve } = require('path');
-var nodeExternals = require('webpack-node-externals');
-const babelConfig = require('./babel.config.json');
+const common = require('./common.js');
 
-module.exports = {
+module.exports = Object.assign({}, common, {
   mode: 'production',
-  entry: resolve(__dirname, '..', require('../package.json').main),
-  output: {
-    filename: 'app.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          cacheDirectory: true,
-          presets: babelConfig.presets,
-          plugins: babelConfig.plugins
-        }
-      }
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+      }),
     ]
-  },
-  resolve: {
-    alias: {
-      Root: resolve(__dirname, '../../', 'src/server'),
-    }
-  },
-  target: 'node',
-  externals: [nodeExternals()],
-  node: {
-    __dirname: false
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    })
+        'NODE_ENV': JSON.stringify('production'),
+      },
+    }),
+    new UglifyJsPlugin({
+      cache: true,
+    }),
   ]
-};
+});

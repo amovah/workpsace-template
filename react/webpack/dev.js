@@ -2,7 +2,6 @@
 
 const webpack = require('webpack');
 const { resolve } = require('path');
-const { env } = require('process');
 const common = require('./common.js');
 const config = require('../src/config');
 
