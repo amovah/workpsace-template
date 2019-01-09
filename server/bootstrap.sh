@@ -5,3 +5,5 @@ babel-plugin-add-module-exports babel-plugin-transform-class-properties \
 babel-plugin-transform-decorators-legacy \
 babel-plugin-transform-object-rest-spread babel-preset-env \
 babel-eslint gulp-eslint
+
+rm bootstrap.sh
