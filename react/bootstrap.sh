@@ -9,3 +9,5 @@ prop-types eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y \
 mini-css-extract-plugin optimize-css-assets-webpack-plugin
 
 yarn add prop-types react react-dom react-redux react-router-dom redux
+
+rm bootstrap.sh
