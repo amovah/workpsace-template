@@ -5,16 +5,23 @@ const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
 const del = require('del');
 
-gulp.task('babel', ['del'], () =>
-  gulp.src('src/**/*.js')
-  .pipe(babel())
-  .pipe(gulp.dest('build/'))
-);
-
-gulp.task('del', cb => {
+gulp.task('del', (cb) => {
   del([
     'build/**'
   ], cb())
+});
+
+gulp.task('babel', (cb) => {
+  gulp.src('src/**/*.js')
+  .pipe(babel({
+    presets: [
+      "@babel/preset-env",
+    ],
+    plugins: [],
+  }))
+  .pipe(gulp.dest('build/'));
+
+  cb();
 });
 
 gulp.task('lint', () =>
@@ -24,8 +31,8 @@ gulp.task('lint', () =>
   .pipe(lint.failAfterError())
 );
 
-gulp.task('dev', ['del', 'babel'], () => {
-  gulp.watch('src/**/*.js', ['del', 'babel']);
+gulp.task('dev', () => {
+  gulp.watch('src/**/*.js', gulp.series('del', 'babel'));
 });
 
-gulp.task('prod', ['lint', 'del', 'babel']);
+gulp.task('prod', gulp.series('lint', 'del', 'babel'));

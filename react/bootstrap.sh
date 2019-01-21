@@ -10,4 +10,4 @@ mini-css-extract-plugin optimize-css-assets-webpack-plugin
 
 yarn add prop-types react react-dom react-redux react-router-dom redux
 
-rm bootstrap.sh
+rm "$1/bootstrap.sh"

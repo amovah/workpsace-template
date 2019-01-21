@@ -1,0 +1,9 @@
+{
+  "main": "build/app.js",
+  "scripts": {
+    "postinstall": "ln -fsn ../build 'node_modules/Root'",
+    "gulp": "./node_modules/.bin/gulp",
+    "dev": "NODE_ENV=development npm run gulp dev",
+    "prod": "NODE_ENV=production npm run gulp prod"
+  }
+}

@@ -8,4 +8,4 @@ eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
 
 yarn add prop-types react react-dom react-redux react-router-dom redux
 
-rm bootstrap.sh
+rm "$1/bootstrap.sh"
