@@ -1,6 +1,6 @@
-let config = {
+const config = {
   prodCDN: '',
-  devCDN: 'http://localhost:8181/static'
+  devCDN: 'http://localhost:8181/static',
   port: 8180,
 };
 
