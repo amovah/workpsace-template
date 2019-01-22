@@ -4,7 +4,7 @@
     "postinstall": "npm run gulp prod; ln -fsn ../build 'node_modules/Root'",
     "gulp": "./node_modules/.bin/gulp",
     "builddev": "NODE_ENV=development npm run gulp dev",
-    "rundev": "NODE_ENV=development",
+    "rundev": "NODE_ENV=development ./node_modules/.bin/nodemon build/app.js",
     "prod": "NODE_ENV=production npm run gulp prod"
   }
 }
