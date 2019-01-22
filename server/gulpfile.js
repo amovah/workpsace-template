@@ -2,7 +2,7 @@
 
 const gulp = require('gulp');
 const babel = require('gulp-babel');
-const eslint = require('gulp-eslint');
+const lint = require('gulp-eslint');
 const del = require('del');
 
 gulp.task('del', (cb) => {
@@ -28,7 +28,6 @@ gulp.task('lint', () =>
   gulp.src('src/**/*.js')
   .pipe(lint())
   .pipe(lint.format())
-  .pipe(lint.failAfterError())
 );
 
 gulp.task('dev', () => {
