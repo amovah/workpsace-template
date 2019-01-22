@@ -3,7 +3,8 @@
   "scripts": {
     "postinstall": "ln -fsn ../build 'node_modules/Root'",
     "gulp": "./node_modules/.bin/gulp",
-    "dev": "NODE_ENV=development npm run gulp dev",
+    "builddev": "NODE_ENV=development npm run gulp dev",
+    "rundev": "NODE_ENV=development",
     "prod": "NODE_ENV=production npm run gulp prod"
   }
 }
