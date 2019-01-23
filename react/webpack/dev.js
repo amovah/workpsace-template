@@ -19,6 +19,7 @@ module.exports = Object.assign({}, common, {
     contentBase: resolve(__dirname, '..', 'build'),
     compress: true,
     port: config.port,
-    hot: true
+    hot: true,
+    historyApiFallback: true,
   },
 })
