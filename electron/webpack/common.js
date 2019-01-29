@@ -5,7 +5,6 @@ const autoprefixer = require('autoprefixer');
 const { resolve } = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const nodeExternals = require('webpack-node-externals');
-const config = require('../src/config.js');
 
 module.exports = {
   entry: {
@@ -55,19 +54,7 @@ module.exports = {
         use: [
           'url-loader'
         ]
-      }, {
-        test: /\.(less|js)$/,
-        use: [
-          {
-            loader: 'string-replace-loader',
-            options: {
-              search: '@@CDN@@',
-              replace: config.cdn,
-              flags: 'g'
-            }
-          }
-        ]
-      }
+      },
     ]
   },
   resolve: {
@@ -76,7 +63,7 @@ module.exports = {
     },
     extensions: ['.js', '.jsx'],
   },
-  target: 'node',
+  target: 'electron',
   externals: [nodeExternals()],
   node: {
     __dirname: false,
