@@ -6,5 +6,6 @@ module.exports = {
     'no-console': 0,
     'operator-assignment': [2, 'never'],
     'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': 0,
 	},
 };

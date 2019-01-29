@@ -6,6 +6,7 @@ module.exports = {
     'no-console': 0,
     'operator-assignment': [2, 'never'],
     'import/no-unresolved': 0,
+    'import/no-extraneous-dependencies': 0,
     'react/no-array-index-key': 0,
     // 'react/prop-types': 0,
     'react/jsx-filename-extension': 0,

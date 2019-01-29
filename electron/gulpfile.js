@@ -6,18 +6,21 @@ const lint = require('gulp-eslint');
 const webpack = require('webpack');
 
 gulp.task('clean', cb =>
-  del(
+  del([
     'build/**',
-    cb
+    '!build',
+  ],
+    cb,
   )
 );
 
-gulp.task('copy', ['clean'], () =>
+
+gulp.task('copy', () =>
   gulp.src('src/index.html')
   .pipe(gulp.dest('build/'))
 );
 
-gulp.task('dev:build', ['clean'], () => {
+gulp.task('dev:build', () => {
   webpack(require('./webpack/dev.js'), (err, stats) => {
     if (err) {
       throw new Error('webpack build failed', err);
@@ -30,7 +33,7 @@ gulp.task('dev:build', ['clean'], () => {
   });
 });
 
-gulp.task('prod:build', ['lint', 'clean'], cb =>
+gulp.task('prod:build', cb =>
   webpack(require('./webpack/prod.js'), (err, stats) => {
     if (err) {
       throw new Error('webpack build failed', err);
@@ -51,6 +54,6 @@ gulp.task('lint', () =>
   .pipe(lint.failAfterError())
 );
 
-gulp.task('default', ['clean', 'copy', 'dev:build']);
-gulp.task('dev', ['clean', 'copy', 'dev:build']);
-gulp.task('prod', ['lint', 'clean', 'copy', 'prod:build']);
+gulp.task('default', gulp.series('clean', 'copy', 'dev:build'));
+gulp.task('dev', gulp.series('clean', 'copy', 'dev:build'));
+gulp.task('prod', gulp.series('lint', 'clean', 'copy', 'prod:build'));
