@@ -63,7 +63,7 @@ module.exports = {
     },
     extensions: ['.js', '.jsx'],
   },
-  target: 'electron',
+  target: 'electron-renderer',
   externals: [nodeExternals()],
   node: {
     __dirname: false,
