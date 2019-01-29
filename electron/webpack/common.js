@@ -6,13 +6,15 @@ const { resolve } = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const nodeExternals = require('webpack-node-externals');
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   entry: {
     electron: resolve(__dirname, '..', 'src/electron.js'),
     app: resolve(__dirname, '..', 'src/app.js'),
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: resolve(__dirname, '..', 'build'),
   },
   module: {
@@ -32,11 +34,11 @@ module.exports = {
       }, {
         test: /\.(css|less)$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: 'global',
             },
           },
           {
