@@ -35,7 +35,7 @@ const devMode = process.env.NODE_ENV !== 'production';
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: 'global',
             },
           },
           {
