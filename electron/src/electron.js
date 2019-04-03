@@ -1,14 +1,48 @@
 import { app, BrowserWindow } from 'electron';
 import { resolve } from 'path';
+import { env } from 'process';
+
+if (env.NODE_ENV === 'development') {
+  require('electron-reload')(__dirname); // eslint-disable-line
+}
 
 let win;
 
 function createWindow() {
-  // Create the browser window.
-  win = new BrowserWindow({ width: 800, height: 600 });
+  win = new BrowserWindow({
+    minWidth: 1000,
+    minHeight: 600,
+    show: false,
+    nodeIntegration: false,
+  });
 
-  // and load the index.html of the app.
-  win.loadFile(resolve(__dirname, 'index.html'));
+  win.loadURL(`file://${resolve(__dirname, 'index.html')}`);
+
+  if (env.NODE_ENV === 'development') {
+    win.webContents.openDevTools();
+  }
+
+  win.on('closed', () => {
+    win = null;
+  });
+
+  win.once('ready-to-show', () => {
+    win.show();
+  });
 }
 
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+});
+
+app.on('activate', () => {
+  if (win === null) {
+    createWindow();
+  }
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});

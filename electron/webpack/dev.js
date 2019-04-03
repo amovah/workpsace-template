@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { resolve } = require('path');
 const common = require('./common.js');
 
 module.exports = Object.assign({}, common, {
@@ -13,4 +13,4 @@ module.exports = Object.assign({}, common, {
     }),
   ],
   devtool: 'source-map',
-})
+});

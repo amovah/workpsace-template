@@ -8,7 +8,7 @@ const config = require('../src/config.js');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
-  module.exports = {
+module.exports = {
   entry: resolve(__dirname, '..', 'src/app.js'),
   output: {
     filename: 'bundle.js',

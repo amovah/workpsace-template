@@ -1,10 +1,11 @@
 {
   "main": "build/electron.js",
   "scripts": {
-    "dev:build": "NODE_ENV=development ./node_modules/.bin/gulp dev",
-    "prod:build": "NODE_ENV=production ./node_modules/.bin/gulp prod",
+    "gulp": "./node_modules/.bin/gulp",
+    "build:dev": "NODE_ENV=development npm run gulp dev; NODE_ENV=development ./node_modules/.bin/webpack --config webpack/dev.js",
+    "build:prod": "NODE_ENV=production npm run gulp prod; NODE_ENV=production ./node_modules/.bin/webpack --config webpack/prod.js",
     "start": "NODE_ENV=development ./node_modules/electron/dist/electron .",
-    "prod": "NODE_ENV=production ./node_modules/electron/dist/electron .",
-    "build": "./node_modules/.bin/electron-builder --config builder.config.js"
-  }
+    "start:dev": "NODE_ENV=development ./node_modules/electron/dist/electron .",
+    "start:prod": "NODE_ENV=production ./node_modules/electron/dist/electron ."
+  },
 }
