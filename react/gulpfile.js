@@ -61,7 +61,6 @@ gulp.task('lint', () =>
   gulp.src(['src/**/*.js', 'src/**/*.jsx'])
   .pipe(lint())
   .pipe(lint.format())
-  .pipe(lint.failAfterError())
 );
 
 gulp.task('dev', gulp.series('dev:copy'));

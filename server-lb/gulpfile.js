@@ -7,5 +7,4 @@ gulp.task('lint', () =>
   gulp.src('./**/*.js')
   .pipe(lint())
   .pipe(lint.format())
-  .pipe(lint.failAfterError())
 );
