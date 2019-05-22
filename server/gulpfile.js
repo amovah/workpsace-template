@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const babel = require('gulp-babel');
 const lint = require('gulp-eslint');
 const del = require('del');
+const { resolve } = require('path');
 
 gulp.task('del', (cb) => {
   del([
@@ -19,6 +20,7 @@ gulp.task('babel', (cb) => {
     ],
     plugins: [],
   }))
+  .pipe(replace('Root', resolve(__dirname, 'src')))
   .pipe(gulp.dest('build/'));
 
   cb();
