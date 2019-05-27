@@ -9,7 +9,7 @@ const { resolve } = require('path');
 gulp.task('del', (cb) => {
   del([
     'build/**'
-  ], cb())
+  ], cb);
 });
 
 gulp.task('babel', (cb) => {
