@@ -28,7 +28,8 @@ module.exports = {
           ],
           plugins: [],
         }
-      }, {
+      },
+      {
         test: /\.(css|less)$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -48,12 +49,20 @@ module.exports = {
           },
           'less-loader'
         ]
-      }, {
+      },
+      {
         test: /\.(png|jpg|jpeg|gif|woff|woff2|ttf|eot|svg)$/,
         use: [
-          'url-loader'
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 500,
+              outputPath: 'assets'
+            },
+          },
         ]
-      }, {
+      },
+      {
         test: /\.(less|js)$/,
         use: [
           {
