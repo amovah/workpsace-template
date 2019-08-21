@@ -4,7 +4,6 @@ const gulp = require('gulp');
 const del = require('del');
 const lint = require('gulp-eslint');
 const replace = require('gulp-replace');
-const config = require('./src/config.js');
 
 gulp.task('clean', cb =>
   del([
@@ -15,7 +14,7 @@ gulp.task('clean', cb =>
   )
 );
 
-gulp.task('dev:copy', gulp.series('clean', (cb) => {
+gulp.task('copy', gulp.series('clean', (cb) => {
   gulp.src(
     'src/static/**/*',
   )
@@ -30,28 +29,7 @@ gulp.task('dev:copy', gulp.series('clean', (cb) => {
   gulp.src(
     'template/index.html',
   )
-  .pipe(replace('@@CDN@@', config.devCDN))
-  .pipe(gulp.dest('build'));
-
-  cb();
-}));
-
-gulp.task('prod:copy', gulp.series('clean', (cb) => {
-  gulp.src(
-    'src/static/**/*',
-  )
-  .pipe(gulp.dest('build'));
-
-  gulp.src([
-    'template/**',
-    '!template/index.html',
-  ])
-  .pipe(gulp.dest('build'));
-
-  gulp.src(
-    'template/index.html',
-  )
-  .pipe(replace('@@CDN@@', config.prodCDN))
+  .pipe(replace('@@CDN@@', process.env.CDN_PATH))
   .pipe(gulp.dest('build'));
 
   cb();
@@ -63,5 +41,5 @@ gulp.task('lint', () =>
   .pipe(lint.format())
 );
 
-gulp.task('dev', gulp.series('dev:copy'));
-gulp.task('prod', gulp.series('lint', 'prod:copy'));
+gulp.task('dev', gulp.series('copy'));
+gulp.task('prod', gulp.series('lint', 'copy'));

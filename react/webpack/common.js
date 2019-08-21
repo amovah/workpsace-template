@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const { resolve } = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const config = require('../src/config.js');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -69,7 +68,7 @@ module.exports = {
             loader: 'string-replace-loader',
             options: {
               search: '@@CDN@@',
-              replace: config.cdn,
+              replace: process.env.CDN_PATH,
               flags: 'g'
             }
           }
